@@ -31,9 +31,9 @@ import UIKit
 class CharacterTableViewCell: UITableViewCell {
   @IBOutlet var nameLabel: UILabel!
   
-  func configure(with character: Character) {
+  func configure(with character: StarWarsCharacter) {
     nameLabel.text = character.name
     nameLabel.accessibilityIdentifier = AccessbilityIdentifiers.characterCellNameLabel
-    accessibilityLabel = AccessbilityIdentifiers.characterCellIdentifier(for: character)
+    accessibilityLabel = AccessbilityIdentifiers.characterCellIdentifier(forCharacterName: character.name)
   }
 }

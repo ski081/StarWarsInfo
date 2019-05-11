@@ -34,6 +34,7 @@ class CharacterListTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    tableView.accessibilityIdentifier = AccessbilityIdentifiers.characterListTable
     viewModel = CharacterListViewModel(networkClient: networkClient,
                                        delegate: self)
     viewModel.requestCharacterList()
@@ -67,7 +68,7 @@ extension CharacterListTableViewController {
 }
 
 extension CharacterListTableViewController: CharacterListViewModelDelegate {
-  func characterListWasUpdated(withCharacters characters: [Character]) {
+  func characterListWasUpdated(withCharacters characters: [StarWarsCharacter]) {
     tableView.reloadData()
   }
 }

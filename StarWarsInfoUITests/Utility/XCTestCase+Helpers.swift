@@ -26,43 +26,25 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+import XCTest
 
-protocol CharacterListViewModelDelegate: AnyObject {
-  func characterListWasUpdated(withCharacters characters: [StarWarsCharacter])
-}
-
-class CharacterListViewModel {
-  weak var delegate: CharacterListViewModelDelegate?
-  
-  private var characterList: [StarWarsCharacter] = []
-  private var networkClient: StarWarsAPINetworklClient
-  
-  init(networkClient: StarWarsAPINetworklClient,
-       delegate: CharacterListViewModelDelegate) {
-    self.networkClient = networkClient
-    self.delegate = delegate
-  }
-  
-  func requestCharacterList() {
-    networkClient.requestAllCharacters { [weak self] characters in
-      guard let self = self else {
-        return
-      }
-      
-      self.characterList = characters
-      
-      DispatchQueue.main.async {
-        self.delegate?.characterListWasUpdated(withCharacters: characters)
-      }
+extension XCTestCase {
+  func waitForElementToAppear(_ element: XCUIElement,
+                              file: StaticString,
+                              line: UInt,
+                              elementName: String,
+                              timeout: TimeInterval = 5.0) {
+    let predicate = NSPredicate(format: "exists == true")
+    let existsExpectation = expectation(for: predicate,
+                                        evaluatedWith: element,
+                                        handler: nil)
+    let result = XCTWaiter().wait(for: [existsExpectation],
+                                  timeout: timeout)
+    
+    guard result == .completed else {
+      let failureMessage = "\(elementName) should be present)"
+      XCTFail(failureMessage, file: file, line: line)
+      return
     }
-  }
-  
-  func numberOfCharacters() -> Int {
-    return characterList.count
-  }
-  
-  func character(for indexPath: IndexPath) -> StarWarsCharacter {
-    return characterList[indexPath.row]
   }
 }

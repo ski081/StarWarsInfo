@@ -35,7 +35,7 @@ class StarWarsAPINetworklClient {
   var dataTask: URLSessionDataTask?
 
   
-  func requestAllCharacters(completion: @escaping ([Character]) -> Void) {
+  func requestAllCharacters(completion: @escaping ([StarWarsCharacter]) -> Void) {
     dataTask?.cancel()
     let url = baseURL()
     let listURL = url.appendingPathComponent("people")

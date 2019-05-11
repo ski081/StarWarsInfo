@@ -34,12 +34,13 @@ class CharacterDetailViewController: UIViewController {
   @IBOutlet var eyeColorLabel: UILabel!
   @IBOutlet var birthYearLabel: UILabel!
   
-  var character: Character!
+  var character: StarWarsCharacter!
   override func viewDidLoad() {
     super.viewDidLoad()
     
     nameLabel.text = character.name
     hairColorLabel.text = character.hairColor
     eyeColorLabel.text = character.eyeColor
+    birthYearLabel.text = character.birthYear
   }
 }

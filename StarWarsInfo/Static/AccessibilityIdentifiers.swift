@@ -27,10 +27,11 @@
 /// THE SOFTWARE.
 
 enum AccessbilityIdentifiers {
+  static let characterListTable = "characterListTable"
   static let characterCellPrefix = "characterCell"
   static let characterCellNameLabel = "characterCellNameLabel"
   
-  static func characterCellIdentifier(for character: Character) -> String {
-    return "\(AccessbilityIdentifiers.characterCellPrefix) \(character.name)"
+  static func characterCellIdentifier(forCharacterName name: String) -> String {
+    return "\(AccessbilityIdentifiers.characterCellPrefix) \(name)"
   }
 }

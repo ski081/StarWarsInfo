@@ -26,43 +26,27 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+@testable import StarWarsInfo
+import XCTest
 
-protocol CharacterListViewModelDelegate: AnyObject {
-  func characterListWasUpdated(withCharacters characters: [StarWarsCharacter])
-}
-
-class CharacterListViewModel {
-  weak var delegate: CharacterListViewModelDelegate?
+class StarWarsInfoUITests: XCTestCase {
+  let resourceLoader = ResourceLoader()
   
-  private var characterList: [StarWarsCharacter] = []
-  private var networkClient: StarWarsAPINetworklClient
-  
-  init(networkClient: StarWarsAPINetworklClient,
-       delegate: CharacterListViewModelDelegate) {
-    self.networkClient = networkClient
-    self.delegate = delegate
-  }
-  
-  func requestCharacterList() {
-    networkClient.requestAllCharacters { [weak self] characters in
-      guard let self = self else {
-        return
-      }
+  func testExample() {
+      let app = XCUIApplication()
+      app.launch()
       
-      self.characterList = characters
-      
-      DispatchQueue.main.async {
-        self.delegate?.characterListWasUpdated(withCharacters: characters)
-      }
+    guard let characterList = resourceLoader.loadCharacterList() else {
+      XCTFail("Invalid resource load")
+      return
     }
-  }
-  
-  func numberOfCharacters() -> Int {
-    return characterList.count
-  }
-  
-  func character(for indexPath: IndexPath) -> StarWarsCharacter {
-    return characterList[indexPath.row]
+    
+    let firstCellIdentifier = AccessbilityIdentifiers.characterCellIdentifier(for: characterList[0])
+    let table = app.tables[AccessbilityIdentifiers.characterListTable]
+    
+    waitForElementToAppear(table, file: #file, line: #line, elementName: "Character List Table", timeout: 5.0)
+    
+    let firstCell = table.cells[firstCellIdentifier]
+    waitForElementToAppear(firstCell, file: #file, line: #line, elementName: "First Character Cell", timeout: 5.0)
   }
 }

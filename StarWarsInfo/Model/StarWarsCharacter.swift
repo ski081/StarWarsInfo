@@ -26,43 +26,9 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
-
-protocol CharacterListViewModelDelegate: AnyObject {
-  func characterListWasUpdated(withCharacters characters: [StarWarsCharacter])
-}
-
-class CharacterListViewModel {
-  weak var delegate: CharacterListViewModelDelegate?
-  
-  private var characterList: [StarWarsCharacter] = []
-  private var networkClient: StarWarsAPINetworklClient
-  
-  init(networkClient: StarWarsAPINetworklClient,
-       delegate: CharacterListViewModelDelegate) {
-    self.networkClient = networkClient
-    self.delegate = delegate
-  }
-  
-  func requestCharacterList() {
-    networkClient.requestAllCharacters { [weak self] characters in
-      guard let self = self else {
-        return
-      }
-      
-      self.characterList = characters
-      
-      DispatchQueue.main.async {
-        self.delegate?.characterListWasUpdated(withCharacters: characters)
-      }
-    }
-  }
-  
-  func numberOfCharacters() -> Int {
-    return characterList.count
-  }
-  
-  func character(for indexPath: IndexPath) -> StarWarsCharacter {
-    return characterList[indexPath.row]
-  }
+struct StarWarsCharacter: Codable {
+  let name: String
+  let hairColor: String
+  let eyeColor: String
+  let birthYear: String
 }

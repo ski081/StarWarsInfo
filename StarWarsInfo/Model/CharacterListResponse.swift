@@ -30,5 +30,5 @@ import Foundation
 
 struct CharacterListResponse: Codable {
   let count: Int
-  let results: [Character]
+  let results: [StarWarsCharacter]
 }

@@ -26,10 +26,31 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+@testable import StarWarsInfo
+import XCTest
 
-enum Gender: String, Codable {
-  case male
-  case female
-  case notApplicable = "n/a"
+class ResourceLoader {
+  func loadResourceData(forFileName name: String) -> Data {
+    let bundle = Bundle(for: ResourceLoader.self)
+    
+    guard let url = bundle.url(forResource: name, withExtension: "json"),
+      let data = try? Data(contentsOf: url) else {
+        XCTFail("Invalid resource file")
+        preconditionFailure()
+    }
+    
+    return data
+  }
+  
+  func loadCharacterList() -> [StarWarsCharacter]? {
+    let data = loadResourceData(forFileName: "CharacterList")
+    let jsonDecoder = JSONDecoder()
+    jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+    
+    if let list = try? jsonDecoder.decode([StarWarsCharacter].self, from: data) {
+        return list
+    } else {
+      return nil
+    }
+  }
 }
