@@ -18,23 +18,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="characterCell" textLabel="ou2-D8-RXV" style="IBUITableViewCellStyleDefault" id="rbW-3t-m7i">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="characterCell" id="rbW-3t-m7i" customClass="CharacterTableViewCell" customModule="StarWarsInfo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rbW-3t-m7i" id="3Co-DU-Dt3">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ou2-D8-RXV">
-                                            <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhZ-Ou-Fhm">
+                                            <rect key="frame" x="16" y="12" width="45" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="YhZ-Ou-Fhm" secondAttribute="trailing" constant="280" id="fhY-KC-AHX"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstItem="YhZ-Ou-Fhm" firstAttribute="leading" secondItem="rbW-3t-m7i" secondAttribute="leading" constant="16" id="0N1-Wd-kqA"/>
+                                    <constraint firstItem="YhZ-Ou-Fhm" firstAttribute="top" secondItem="rbW-3t-m7i" secondAttribute="top" constant="12" id="KwQ-88-cUi"/>
+                                    <constraint firstAttribute="bottom" secondItem="YhZ-Ou-Fhm" secondAttribute="bottom" constant="11" id="L1n-or-gx1"/>
+                                </constraints>
                                 <connections>
+                                    <outlet property="nameLabel" destination="YhZ-Ou-Fhm" id="3OO-pl-vSq"/>
                                     <segue destination="hoJ-MM-HDg" kind="show" id="bv6-yE-uIe"/>
                                 </connections>
                             </tableViewCell>

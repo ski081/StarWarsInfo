@@ -34,7 +34,7 @@ class CharacterListTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    tableView.accessibilityIdentifier = AccessbilityIdentifiers.characterListTable
+    tableView.accessibilityIdentifier = AccessibilityIdentifiers.characterListTable
     viewModel = CharacterListViewModel(networkClient: networkClient,
                                        delegate: self)
     viewModel.requestCharacterList()
@@ -58,10 +58,12 @@ extension CharacterListTableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell",
-                                             for: indexPath)
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath) as? CharacterTableViewCell else {
+      fatalError("Invalid cell type received")
+    }
+    
     let character = viewModel.character(for: indexPath)
-    cell.textLabel?.text = character.name
+    cell.configure(with: character)
     
     return cell
   }

@@ -33,7 +33,7 @@ class CharacterTableViewCell: UITableViewCell {
   
   func configure(with character: StarWarsCharacter) {
     nameLabel.text = character.name
-    nameLabel.accessibilityIdentifier = AccessbilityIdentifiers.characterCellNameLabel
-    accessibilityLabel = AccessbilityIdentifiers.characterCellIdentifier(forCharacterName: character.name)
+    nameLabel.accessibilityIdentifier = AccessibilityIdentifiers.characterCellNameLabel
+    accessibilityLabel = AccessibilityIdentifiers.characterCellIdentifier(forCharacterName: character.name)
   }
 }

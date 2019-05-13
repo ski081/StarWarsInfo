@@ -42,5 +42,14 @@ class CharacterDetailViewController: UIViewController {
     hairColorLabel.text = character.hairColor
     eyeColorLabel.text = character.eyeColor
     birthYearLabel.text = character.birthYear
+    
+    setupAccessibilityIdentifiers()
+  }
+  
+  func setupAccessibilityIdentifiers() {
+    nameLabel.accessibilityIdentifier = AccessibilityIdentifiers.characterDetailNameLabel
+    hairColorLabel.accessibilityIdentifier = AccessibilityIdentifiers.characterDetailHairColorLabel
+    eyeColorLabel.accessibilityIdentifier = AccessibilityIdentifiers.characterDetailEyeColorLabel
+    birthYearLabel.accessibilityIdentifier = AccessibilityIdentifiers.characterDetailBirthYearLabel
   }
 }

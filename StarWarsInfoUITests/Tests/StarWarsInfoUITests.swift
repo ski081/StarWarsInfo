@@ -26,27 +26,67 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-@testable import StarWarsInfo
 import XCTest
 
 class StarWarsInfoUITests: XCTestCase {
-  let resourceLoader = ResourceLoader()
-  
-  func testExample() {
-      let app = XCUIApplication()
-      app.launch()
-      
-    guard let characterList = resourceLoader.loadCharacterList() else {
-      XCTFail("Invalid resource load")
-      return
-    }
+  func testCharacterList() {
+    let app = XCUIApplication()
+    app.launch()
     
-    let firstCellIdentifier = AccessbilityIdentifiers.characterCellIdentifier(for: characterList[0])
-    let table = app.tables[AccessbilityIdentifiers.characterListTable]
-    
+    let table = app.tables[AccessibilityIdentifiers.characterListTable]
     waitForElementToAppear(table, file: #file, line: #line, elementName: "Character List Table", timeout: 5.0)
     
-    let firstCell = table.cells[firstCellIdentifier]
-    waitForElementToAppear(firstCell, file: #file, line: #line, elementName: "First Character Cell", timeout: 5.0)
+    let identifiers = generateIdentifierList()
+    identifiers.forEach { identifier in
+      let cell = table.cells[identifier]
+      XCTAssertTrue(cell.exists, "\(identifier) cell should be present")
+    }
+  }
+  
+  func testCellDetail() {
+    continueAfterFailure = false
+    let app = XCUIApplication()
+    app.launch()
+    
+    let table = app.tables[AccessibilityIdentifiers.characterListTable]
+    waitForElementToAppear(table, file: #file, line: #line, elementName: "Character List Table")
+
+    let identifier = "\(AccessibilityIdentifiers.characterCellPrefix) Luke Skywalker"
+    let cell = table.cells[identifier]
+    XCTAssertTrue(cell.exists, "\(identifier) cell should be present")
+      
+    cell.tap()
+    
+    let nameLabel = app.staticTexts[AccessibilityIdentifiers.characterDetailNameLabel]
+    XCTAssertEqual(nameLabel.label, "Luke Skywalker", "Name label should match character")
+    
+    let hairColorLabel = app.staticTexts[AccessibilityIdentifiers.characterDetailHairColorLabel]
+    XCTAssertEqual(hairColorLabel.label, "blond", "Hair Color label should match character")
+    
+    let eyeColorLabel = app.staticTexts[AccessibilityIdentifiers.characterDetailEyeColorLabel]
+    XCTAssertEqual(eyeColorLabel.label, "blue", "Eye Color label should match character")
+    
+    let birthYearLabel = app.staticTexts[AccessibilityIdentifiers.characterDetailBirthYearLabel]
+    XCTAssertEqual(birthYearLabel.label, "19BBY", "Name label should match character")
+    
+    let backButton = app.buttons[AccessibilityLabels.characterDetailBackButton]
+    XCTAssertTrue(backButton.exists, "Back button should be present")
+    backButton.tap()
+    
+    waitForElementToAppear(table, file: #file, line: #line, elementName: "Character List Table")
+  }
+
+  func generateIdentifierList() -> [String] {
+    let names = [
+      "Luke Skywalker",
+      "C-3PO",
+      "R2-D2"
+    ]
+    
+    let identifiers = names.map { name in
+      return "\(AccessibilityIdentifiers.characterCellPrefix) \(name)"
+    }
+    
+    return identifiers
   }
 }

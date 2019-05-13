@@ -26,12 +26,19 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-enum AccessbilityIdentifiers {
+enum AccessibilityIdentifiers {
+  // MARK: - Character List
   static let characterListTable = "characterListTable"
   static let characterCellPrefix = "characterCell"
   static let characterCellNameLabel = "characterCellNameLabel"
   
+  // MARK: - Character Detail
+  static let characterDetailNameLabel = "characterDetailNameLabel"
+  static let characterDetailHairColorLabel = "characterDetailHairColorLabel"
+  static let characterDetailEyeColorLabel = "characterDetailEyeColorLabel"
+  static let characterDetailBirthYearLabel = "characterDetailBirthYearLabel"
+  
   static func characterCellIdentifier(forCharacterName name: String) -> String {
-    return "\(AccessbilityIdentifiers.characterCellPrefix) \(name)"
+    return "\(AccessibilityIdentifiers.characterCellPrefix) \(name)"
   }
 }
