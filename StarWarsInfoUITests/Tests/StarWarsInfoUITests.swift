@@ -29,8 +29,14 @@
 import XCTest
 
 class StarWarsInfoUITests: XCTestCase {
+  override func setUp() {
+    super.setUp()
+    continueAfterFailure = false
+  }
+  
   func testCharacterList() {
     let app = XCUIApplication()
+    app.launchArguments = LaunchArguments.launchLocalArguments
     app.launch()
     
     let table = app.tables[AccessibilityIdentifiers.characterListTable]
@@ -44,8 +50,8 @@ class StarWarsInfoUITests: XCTestCase {
   }
   
   func testCellDetail() {
-    continueAfterFailure = false
     let app = XCUIApplication()
+    app.launchArguments = LaunchArguments.launchLocalArguments
     app.launch()
     
     let table = app.tables[AccessibilityIdentifiers.characterListTable]

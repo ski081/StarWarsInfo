@@ -29,11 +29,17 @@
 import Foundation
 
 class StarWarsAPINetworklClient {
-  let baseURLString = "https://swapi.co/api/"
   let defaultSession = URLSession(configuration: .default)
   
   var dataTask: URLSessionDataTask?
 
+  var baseURLString: String {
+    if StartupUtils.shouldRunLocal() {
+      return "http://localhost:9999/swapi.co/api/"
+    } else {
+      return "https://swapi.co/api/"
+    }
+  }
   
   func requestAllCharacters(completion: @escaping ([StarWarsCharacter]) -> Void) {
     dataTask?.cancel()

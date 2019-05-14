@@ -16,6 +16,8 @@
 		991AE9462286F9EF001D4761 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B83B342286ED4D00CB01CF /* AccessibilityIdentifiers.swift */; };
 		99662732228A2C9800FDCFC2 /* AccessibilityLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99662731228A2C9800FDCFC2 /* AccessibilityLabels.swift */; };
 		99662733228A2CD000FDCFC2 /* AccessibilityLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99662731228A2C9800FDCFC2 /* AccessibilityLabels.swift */; };
+		99662736228A32D600FDCFC2 /* StartupUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99662735228A32D600FDCFC2 /* StartupUtils.swift */; };
+		99662738228A5A3500FDCFC2 /* LaunchArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99662737228A5A3500FDCFC2 /* LaunchArguments.swift */; };
 		99AA513622850B8500CF1728 /* StarWarsAPINetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AA513522850B8500CF1728 /* StarWarsAPINetworkClient.swift */; };
 		99AA513822850B9000CF1728 /* StarWarsCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AA513722850B9000CF1728 /* StarWarsCharacter.swift */; };
 		99AA513D22850D0400CF1728 /* CharacterListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AA513C22850D0400CF1728 /* CharacterListResponse.swift */; };
@@ -47,6 +49,8 @@
 		991AE93A2286F159001D4761 /* XCTestCase+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Helpers.swift"; sourceTree = "<group>"; };
 		991AE9442286F6C2001D4761 /* CharacterList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CharacterList.json; sourceTree = "<group>"; };
 		99662731228A2C9800FDCFC2 /* AccessibilityLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityLabels.swift; sourceTree = "<group>"; };
+		99662735228A32D600FDCFC2 /* StartupUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupUtils.swift; sourceTree = "<group>"; };
+		99662737228A5A3500FDCFC2 /* LaunchArguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchArguments.swift; sourceTree = "<group>"; };
 		99AA513522850B8500CF1728 /* StarWarsAPINetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsAPINetworkClient.swift; sourceTree = "<group>"; };
 		99AA513722850B9000CF1728 /* StarWarsCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsCharacter.swift; sourceTree = "<group>"; };
 		99AA513C22850D0400CF1728 /* CharacterListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListResponse.swift; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				991AE93A2286F159001D4761 /* XCTestCase+Helpers.swift */,
+				99662737228A5A3500FDCFC2 /* LaunchArguments.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -111,6 +116,14 @@
 				991AE9312286F06D001D4761 /* StarWarsInfoUITests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		99662734228A32C300FDCFC2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				99662735228A32D600FDCFC2 /* StartupUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		99AA513422850B6D00CF1728 /* Network */ = {
@@ -188,6 +201,7 @@
 		D2A5F2021F4A9144005CD714 /* StarWarsInfo */ = {
 			isa = PBXGroup;
 			children = (
+				99662734228A32C300FDCFC2 /* Utils */,
 				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
 				99B83B2F2286EC1B00CB01CF /* ViewControllers */,
 				99B83B312286EC6D00CB01CF /* Views */,
@@ -308,6 +322,7 @@
 				99662733228A2CD000FDCFC2 /* AccessibilityLabels.swift in Sources */,
 				991AE93B2286F159001D4761 /* XCTestCase+Helpers.swift in Sources */,
 				991AE9462286F9EF001D4761 /* AccessibilityIdentifiers.swift in Sources */,
+				99662738228A5A3500FDCFC2 /* LaunchArguments.swift in Sources */,
 				991AE9322286F06D001D4761 /* StarWarsInfoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +339,7 @@
 				99662732228A2C9800FDCFC2 /* AccessibilityLabels.swift in Sources */,
 				99B83B2E2286764E00CB01CF /* CharacterDetailViewController.swift in Sources */,
 				99B83B352286ED4D00CB01CF /* AccessibilityIdentifiers.swift in Sources */,
+				99662736228A32D600FDCFC2 /* StartupUtils.swift in Sources */,
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
 				99AA513622850B8500CF1728 /* StarWarsAPINetworkClient.swift in Sources */,
 			);
