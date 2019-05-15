@@ -201,12 +201,12 @@
 		D2A5F2021F4A9144005CD714 /* StarWarsInfo */ = {
 			isa = PBXGroup;
 			children = (
-				99662734228A32C300FDCFC2 /* Utils */,
 				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
 				99B83B2F2286EC1B00CB01CF /* ViewControllers */,
 				99B83B312286EC6D00CB01CF /* Views */,
 				99AA513922850B9900CF1728 /* Model */,
 				99AA513422850B6D00CF1728 /* Network */,
+				99662734228A32C300FDCFC2 /* Utils */,
 				99B83B362286EE2300CB01CF /* Static */,
 				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
 				5394F02321864DF4006E754C /* LaunchScreen.storyboard */,

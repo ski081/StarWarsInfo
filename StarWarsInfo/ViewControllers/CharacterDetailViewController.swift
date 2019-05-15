@@ -35,6 +35,7 @@ class CharacterDetailViewController: UIViewController {
   @IBOutlet var birthYearLabel: UILabel!
   
   var character: StarWarsCharacter!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     

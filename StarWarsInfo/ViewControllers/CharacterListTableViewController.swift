@@ -43,7 +43,7 @@ class CharacterListTableViewController: UITableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let viewController = segue.destination as? CharacterDetailViewController,
       let selectedIndexPath = tableView.indexPathForSelectedRow else {
-      fatalError("Incorrect destination viewcontroller or selectedIndexPath received")
+      fatalError("Incorrect destination view controller or selectedIndexPath received")
     }
     
     let character = viewModel.character(for: selectedIndexPath)

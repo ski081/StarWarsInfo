@@ -73,5 +73,4 @@ class StarWarsAPINetworklClient {
     
     return url
   }
-
 }
